@@ -1,358 +1,476 @@
-<html>
-	<head><meta charset="utf-8">
-		<link href="style.css" rel="stylesheet">
-		<title>Your Name resume</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-	</head>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peter Schults - CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1f2937;
+    --body: #4b5563;
+    --muted: #6b7280;
+    --red: #ee4444;
+    --side: #ebf4f3;
+    --yellow-a: #fbd32c;
+    --yellow-b: #fee97a;
+    --dot-a: #ffdfa1;
+    --dot-b: #a5daa3;
+    --icon: #2d3339;
+    --desk: #d9dcdf;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    margin: 0;
+    background: var(--desk);
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    color: var(--body);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--ink); text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 
-	<body>
-		<header id="header">
-			<!-- resume header with your name and title -->
-			<h1><b>PETER</b> SCHULTS</h1>
-			<hr>
-			Integration Consultant
-			<hr>
-		</header>
-		<main>
-			<article id="mainLeft">
-				<section>
-					<h2>CONTACT</h2>
-					<p>
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                        <a href="mailto:ptrschults@gmail.com">mailto:ptrschults@gmail.com</a>
-                        <p>
-                            <i class="fab fa-github" aria-hidden="true"></i>
-                            <a href="https://github.com/peterschults">peterschults</a>
-                        </p>
-                        <p>
-                            <i class="fab fa-linkedin" aria-hidden="true"></i>
-                            <a href="https://www.linkedin.com/in/peterschults/">peterschults</a>
-                        </p>
-                    </p>
-				</section>
-				<section>
-					<h2>SKILLS</h2>
-                    <ul>
-                    <li>Integration: SAP CPI, SAP PO, SAP ECC/S4, Boomi, Seeburger</li>
-                    <li>Cloud & Azure: Logic Apps, API Management, Bicep, Service Bus, Data Factory</li>
-                    <li>Development: XSLT, JSON, XML, REST, SOAP, ED</li>
-                    <li>Ways of Working: DevOps, coordination, technical leadership</li>
-                    <li>Architecture: Integration design, process optimisation, system analysis</li>
-                    </ul>
-				</section>
-                <section>
-					<h2>EDUCATION</h2>
-                        <ul>
-                            <li>SAP PO & CPI knowledge</li>
-                            <li>Boomi (Associate Developer & Professional)</li>
-                            <li>Jitterbit (Core Foundations & Admin)</li>
-                            <li>Archimate 2</li>
-                            <li>AMBI modules (HE2, HB1, HS1–HS3, HE1)</li>
-                            <li>MTS Computer Science, Electronics, Computing</li>
-                        </ul>
-                        
-				</section>            
-			</article>
-			<article id="mainRight">
-				<section>
-					<h2>ABOUT</h2>
-					<p> 
-                        Senior integration specialist with extensive experience across SAP, Azure, and multiple middleware platforms. Known for being calm, pragmatic, and solution‑oriented with strong analytical capabilities. Comfortable leading technical delivery while staying hands‑on in complex integration landscapes.
-                    </p> 
+  /* A4 sheets */
+  .sheet {
+    position: relative;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 24px auto;
+    background: #fff;
+    box-shadow: 0 2px 14px rgba(31, 41, 55, .18);
+    overflow: hidden;
+  }
 
-					<h2>Personal Attributes</h2>
-					<p> 
-                        Senior integration specialist with extensive experience across SAP, Azure, and multiple middleware platforms. Known for being calm, pragmatic, and solution‑oriented with strong analytical capabilities. Comfortable leading technical delivery while staying hands‑on in complex integration landscapes.
-                    </p> 
+  /* Headings with red underline (PDF style) */
+  h2 {
+    display: inline-block;
+    margin: 0 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 3px solid var(--red);
+    color: var(--ink);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .main h2 { border-bottom: 0; padding-bottom: 0; }
 
+  /* ---------- Page 1: hero ---------- */
+  .hero {
+    position: relative;
+    height: 80mm;
+    display: flex;
+    align-items: center;
+    padding-left: 30mm;
+  }
+  .hero::before {               /* yellow half circle on the left edge */
+    content: "";
+    position: absolute;
+    left: -30mm;
+    top: 18mm;
+    width: 60mm;
+    height: 60mm;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--yellow-a), var(--yellow-b));
+  }
+  .photo {
+    position: relative;
+    width: 57mm;
+    height: 57mm;
+    margin-top: 6mm;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: grayscale(1);
+    background: #e5e7eb;
+  }
+  .identity { margin: 6mm 0 0 18mm; }
+  .identity h1 {
+    display: inline-block;
+    margin: 0 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 3px solid var(--red);
+    color: var(--ink);
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    line-height: 1.15;
+  }
+  .identity .role { margin: 0; font-size: 21px; color: var(--body); }
+  .identity .sub { margin: 2px 0 0; font-size: 15px; color: var(--muted); }
 
-                    
-				</section>
-				<section>
-					<h2>WORK EXPERIENCE</h2>
+  /* ---------- Page 1: columns ---------- */
+  .cols {
+    display: grid;
+    grid-template-columns: 76mm 1fr;
+    min-height: 217mm;
+  }
+  .side {
+    background: var(--side);
+    padding: 8mm 8mm 5mm 11mm;
+  }
+  .side section + section { margin-top: 26px; }
+  .grid2 {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    column-gap: 30px;
+    margin: 0; padding: 0; list-style: none;
+  }
+  .list { margin: 0; padding: 0; list-style: none; }
+  .grid2 li, .list li { font-size: 14px; line-height: 1.75; white-space: nowrap; }
+  .side h2 { font-size: 19px; margin-bottom: 12px; }
+  .contact li { display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 1.8; }
+  .contact svg { width: 15px; height: 15px; flex: none; fill: var(--ink); }
 
-                    <h3><b>SAP Integration Consultant</b></h3>
-                    <p><b>NIKON | october 2025 - may 2026</b></p>
-                    <p>
-                        S/4 migration; IT-Integration teamlead
-                    </p>
-                    <ul>
-                            <li>Hands-on support on Seeburger integrations</s></samp></li>
-                            <li>Assisting on testing processes with external applications, Seeburger and SAP S/4</li>
-                            <li>S/4 Integration related configurations</li>
-                    </ul>
-                    <p><b>DKG | august 2025 - current</b></p>
-                    <p>
-                        CPI interface developments; SAP-BTP-IS consultant
-                    </p>
-                    <ul>
-                            <li>Hands-on developing CPI integrations</s></samp></li>
-                            <li>CRM from/to S/4</s></samp></li>
-                            <li>AFAS from/to S/4</s></samp></li>
+  .main { padding: 9mm 12mm 12mm 13mm; }
+  .main section + section { margin-top: 34px; }
+  .main p {
+    margin: 0 0 10px;
+    text-align: justify;
+    hyphens: auto;
+  }
+  .certs { margin: 0; padding: 0; list-style: none; }
+  .certs li { color: var(--ink); font-weight: 600; font-size: 13.5px; margin-bottom: 12px; }
+  .certs .note { font-weight: 400; color: var(--body); }
+  .side .certs li { white-space: normal; color: var(--ink); font-weight: 600; font-size: 13px; line-height: 1.4; margin-bottom: 5px; }
 
-                    </ul>
+  /* ---------- Experience pages ---------- */
+  .xp { padding: 40mm 17mm 70mm; }
+  .xp-icon {
+    position: absolute;
+    top: 14mm;
+    left: 17mm;
+    width: 14mm; height: 14mm;
+    border-radius: 50%;
+    background: var(--icon);
+    display: grid; place-items: center;
+  }
+  .xp-icon svg { width: 7.5mm; height: 7.5mm; }
+  .job { break-inside: avoid; page-break-inside: avoid; }
+  .job + .job { margin-top: 22px; }
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .job h3 { margin: 0; color: var(--ink); font-size: 19px; font-weight: 700; line-height: 1.3; }
+  .job .date { flex: none; color: var(--body); font-size: 13px; font-weight: 600; }
+  .job .title { margin: 0 0 4px; font-size: 16px; color: var(--body); }
+  .job p { margin: 0; text-align: justify; hyphens: auto; }
+  .job ul { margin: 4px 0 0; padding: 0; list-style: none; }
+  .job p + p, .job ul + p { margin-top: 6px; }
+  .job li { text-align: justify; hyphens: auto; }
+  .job li + li { margin-top: 2px; }
+  .job li { padding-left: 11px; text-indent: -11px; }
+  .job li::before { content: "- "; }
 
-                    <h3><b>Azure Integration Consultant</b></h3>
+  .dots {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 62mm;
+    background: linear-gradient(180deg, rgba(255,223,161,0) 0%, var(--dot-a) 45%, var(--dot-b) 100%);
+    -webkit-mask: radial-gradient(circle, #000 1.6px, transparent 2.2px) 0 0 / 7.4mm 5.3mm;
+            mask: radial-gradient(circle, #000 1.6px, transparent 2.2px) 0 0 / 7.4mm 5.3mm;
+    pointer-events: none;
+  }
 
-                    
-                    <p><b>Port of Rotterdam | march 2024 - october 2024</b></p>
-                    <p>
-                        Support for transferring integrations from SAP PO to Azure and migrating from SAP R3 to SAP S/4 HANA. Tasks include modifying and testing interfaces to ensure compatibility with the new SAP system, in collaboration with SAP management partner myBrand and a specialized team. Additionally, support and advice on optimizing functional processes.
-                    </p>
-                    <ul>
-                            <li>API management</s></samp></li>
-                            <li>Logic APP's</li>
-                            <li>DEVOPS</li>                            
-                            <li>XSLT mapping</li>
-                            <li>BICEP</li>
-                            <li>Servicebus</li>
-                            <li>Workbooks</li>
+  /* ---------- Responsive ---------- */
+  @media screen and (max-width: 820px) {
+    body { background: #fff; }
+    .sheet { width: 100%; min-height: 0; margin: 0; box-shadow: none; }
+    .hero { height: auto; flex-direction: column; align-items: flex-start; padding: 40px 24px 32px 24px; }
+    .hero::before { left: -90px; top: 50px; width: 150px; height: 150px; }
+    .photo { width: 170px; height: 170px; margin: 0 0 0 30px; }
+    .identity { margin: 24px 0 0; }
+    .identity h1 { font-size: 28px; }
+    .identity .role { font-size: 18px; }
+    .cols { grid-template-columns: 1fr; min-height: 0; }
+    .grid2 li, .list li { white-space: normal; }
+    .side, .main { padding: 28px 24px; }
+    .xp { padding: 96px 24px 180px; }
+    .xp-icon { top: 32px; left: 24px; width: 48px; height: 48px; }
+    .xp-icon svg { width: 26px; height: 26px; }
+    .job-head { flex-direction: column; gap: 0; }
+    .main p, .job p { text-align: left; }
+    .dots { height: 160px; -webkit-mask-size: 26px 20px; mask-size: 26px 20px; }
+  }
 
-                    </ul>
-                    <p><b>Gemeente Roosendaal, Hilversum, Roermond | 2022 - 2023</b></p>
-                    <p>
-                        SAP BYD integration with "Zaaksysteem.nl", "Haalcentraal.nl" and "Chamber of Commerce" 
-                    </p>
-                    <ul>
-                            <li>API management</s></samp></li>
-                            <li>Logic APP's</li>
-                            <li>XSLT mapping</li>
-                    </ul>
+  /* ---------- Print to A4 ---------- */
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: #fff; }
+    .sheet { margin: 0; box-shadow: none; height: 296.8mm; min-height: 0; page-break-after: always; break-after: page; }
+    .sheet:last-child { page-break-after: auto; break-after: auto; }
+    .xp { padding-top: 40mm; }
+  }
+</style>
+</head>
+<body>
 
+<!-- ===================== PAGE 1 ===================== -->
+<div class="sheet">
+  <header class="hero">
+    <img class="photo" src="data:image/jpeg;base64,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" alt="Portret van Peter Schults">
+    <div class="identity">
+      <h1>Peter Schults</h1>
+      <p class="role">Cloud Integratie Architect</p>
+      <p class="sub">IT-ervaring sinds 1984</p>
+    </div>
+  </header>
 
-                    <p><b>Costengeneering B.V. | 2022 - 2022</b></p>
-                    <p>
-                        SAP S4/HANA Maintenance integration 
-                    </p>
-                    <ul>
-                            <li>API management</s></samp></li>
-                            <li>Logic APP's</li>
-                            <li>XSLT mapping</li>
-                    </ul>
+  <div class="cols">
+    <aside class="side">
+      <section>
+        <h2>Competenties</h2>
+        <ul class="grid2">
+          <li>Integratie</li><li>Development</li>
+          <li>Coördinatie</li><li>Beheer</li>
+          <li>Teamlead</li><li>Architectuur</li>
+          <li>Adviseur</li><li>Security</li>
+        </ul>
+      </section>
 
-                    <p><b>Zenner B.V. | 2022 - 2022</b></p>
-                    <p>
-                        SAP ECC integration with DHL
-                    </p>
-                    <ul>
-                            <li>API management</s></samp></li>
-                            <li>Logic APP's</li>
-                            <li>XSLT mapping</li>
-                    </ul>
-                   
+      <section>
+        <h2>Techniek</h2>
+        <ul class="list">
+          <li>SAP Cloud Platform</li>
+          <li>SAP NetWeaver</li>
+          <li>SAP PI, PO en CPI</li>
+          <li>EDI &amp; XML</li>
+          <li>Windows</li>
+          <li>Linux</li>
+          <li>AS/400</li>
+          <li>Seeburger</li>
+          <li>Boomi</li>
+          <li>Azure Integration</li>
+        </ul>
+      </section>
 
-                    <p><b>ODRA | 2022 - 2022</b></p>
-                    <p>
-                        SAP BYD integration with NMBRS 
-                    </p>
-                    <ul>
-                            <li>API management</s></samp></li>
-                            <li>Logic APP's</li>
-                            <li>XSLT mapping</li>
-                    </ul>
+      <section>
+        <h2>Referenties</h2>
+        <ul class="grid2">
+          <li>Alliander</li><li>Aldipress</li>
+          <li>PostNL</li><li>Mammoet</li>
+          <li>Greenery</li><li>Ahrend / Lyreco</li>
+          <li>Greenyard</li><li>Despec</li>
+          <li>Deloitte</li>
+        </ul>
+      </section>
+    </aside>
 
-                    <p><b>Aldipress | 2022 - 2022</b></p>
-                    <p>
-                        Rebuild of interfaces from Jittberbit to Azure Integration platform.
-                    </p>
-                    <ul>
-                            <li>SAP ECC Backend</s></samp></li>
-                            <li>API management</s></samp></li>
-                            <li>Datafactory</li>
-                            <li>Logic APP's</li>
-                            <li>XSLT mapping</li>
-                            <li>Liquid</li>
-                    </ul>
-                    <p><b>
-                        Royal de Boer | 2022 - 2022
-                    </b>
-                    </p>
-                    <p>
-                        Integration scenario's based on Azure integration between SAP ECC and external transport organisation
-                    </p>
-                    <ul>
-                            <li>API management</s></samp></li>
-                            <li>IDOC</li>
-                            <li>Logic APP's</li>
-                            <li>XSLT mapping</li>
-                    </ul>
-					<h3><b>SAP BTP Integration Consultant</b></h3>
-<p><b>Kafkas | 2023 - 2023</b></p>
-<p>SAP BTP-IS  development between INRIVER PIM Solution S/4HANA and SAP CPQ to synchronize productdata</p>
-<ul>
-		<li>REST API developments</s></samp></li>
-		<li>SOAP</li>
-        <li>ODATA</li>
-        <li>API</li>
-</ul>
-<h3><b>Boomi Integration Consultant</b></h3>
-<p><b>Raad voor Rechtsbijstand | 2022 - 2022</b></p>
-<p>API development between Government organisations and Lawyers.</p>
-<ul>
-		<li>REST API developments</s></samp></li>
-		<li>API Management</li>
-        <li>Canonical Datamodel</li>
-        <li>XSLT mapping</li>
-</ul>
-<p><b>Karl Lagerfeld | 2026 - Heden</b></p>
-<p>API development between Government organisations and Lawyers.</p>
-<ul>
-		<li>Process developments</s></samp></li>
-		<li>EDI mappings</li>
-        <li>SQL Database processes</li>
-</ul>
+    <main class="main">
+      <section>
+        <h2>Profiel</h2>
+        <p>Peter heeft een zeer ruime en unieke combinatie van IT-ervaring opgedaan in rollen als ERP-consultant, integratieconsultant, IT-manager en projectmanager.</p>
+        <p>Om Peter te omschrijven passen de volgende kernwoorden: loyaal, stressbestendig, humor, mensgericht, rustig, overzicht, doelgericht en pragmatisch. Met deze karaktereigenschappen en zijn brede IT-kennis klaart hij complexe IT-projecten.</p>
+        <p>Peter beschikt over een goed analytisch vermogen, is creatief en levert werk van goede kwaliteit af. Hij is in staat om complexe vraagstukken op conceptueel niveau uit te werken en deze te (laten) realiseren tot een werkende oplossing. Peter gaat geen enkele uitdaging uit de weg en volgt de nieuwe ontwikkelingen op het gebied van cloudintegratie.</p>
+      </section>
 
-    <h3><b>Integration Consultant</b></h3>
-<p><b>Aldipress | 2021 - 2022</b></p>
-<p>
-Move SAP PI interfaces to Jitterbit Cloud
-</p>
-<ul>
-<li>REST API developments</s></samp></li>
-<li>Jitterbit studio</li>
-<li>Jitterbit cloud studio</li>
-</ul>
-<p><b>Alliander | 2021 - 2022</b></p>
-<p>
-Migrate fileinterfaces to sharepoint using Seeburger Sharepoint extension.
-</p>
-<ul>
-<li>Seeburger</s></samp></li>
-<li>Sharepoint</li>
+      <section>
+        <h2>Opleiding / Certificering</h2>
+        <ul class="certs">
+          <li>SAP TechEd <span class="note">- Frequent deelnemer</span></li>
+          <li>PI Certificering</li>
+          <li>Boomi</li>
+          <li>Jitterbit</li>
+          <li>ArchiMate 2</li>
+          <li>AMBI</li>
+          <li>MTS Computerkunde</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</div>
 
-</ul>
-<p><b>IDA | 2021 - 2021</b></p>
-<p>Feasibility Study; impact on IT, costs for IT, incorporate the services of Seeburger as outsourced middleware interfacing party.
-to replace Talent ESB with Seeburger
-</p>
-<ul>
-<li>Seeburger</s></samp></li>
-<li>Talent ESB</li>
-</ul>
-<p><b>Deloitte | 2019 - 2021</b></p>
-<p>
-Centralize SAP PI and SAP PO systems. Rebuild of 50 interfaces used to exchange data between SAP, Sharepoint, Salesforce, Concur, etc. Integration with S/4 implementat
-</p>
-<ul>
-<li>SAP PO</s></samp></li>
-<li>REST/ODATA</li>
-</ul>
-<p><b>Heerema | 2019 - 2022</b></p>
-<p>Building interfaces between various applications using SAP PO and BPM</p>
-<ul>
-<li>SAP PO</s></samp></li>
-<li>SuccessFactors</s></samp></li>
-<li>SAP HR</s></samp></li>
-<li>BPM</li>
-<li>REST/IDOC/SOAP</li>
-</ul>
-<p><b>Greenyard | 2019 - 2022</b></p>
-<p>SAP PO interfaces between various applications using SAP PO and SAP B2B Addon</p>
-<ul>
-<li>SAP PO</s></samp></li>
-<li>EDIFACT</li>
-<li>IDOC</li>
-</ul>
-<h3><b>Seeburger Integration Consultant</b></h3>
-<p><b>JDE | 2018 - 2019</b></p>
-<p>Delivery manager responsible for 24 countries connected to Seeburger Managed Service solutions</p>
-<ul>
-<li>EDIFACT</s></samp></li>
-<li>EDI</li>
-<li>SAP PO</li>
-</ul>
-<p><b>XPO | 2018 - 2019</b></p>
-<p>Consolidate 3 Seeburger implementations</p>
-<ul>
-<li>EDIFACT</s></samp></li>
-<li>EDI</li>
-<li>IDOC</li>
-</ul>
-<h3><b>Fieldmanager</b></h3>
-<p><b>Oliver-it | 2015 - 2018</b></p>
-<p>Responsible for a team of 30 consultants concerning personal development and knowledge management</p>
-<ul>
-<li>Coordination</s></samp></li>
-<li>HRM</li>
-</ul>
-<h3><b>SAP Netweaver teamlead</b></h3>
-<p><b>POSTNL | 2010 - 2018</b></p>
-<p>responsible for projects on the SAP netweaver platforms (PI and CE).</p>
-<ul>
-<li>PO IAAS migration</s></li>
-<li>HCI CLOUD migration</s></li>
-<li>SAP CE</li>
-<li>SAP PO</li>
-<LI>Integrations with:SAP HR, SRM, ECC, SALESFORCE , etc</LI>
-<li>SAP HCI</li>
-</ul>
-<h3><b>Solution Architect</b></h3>
-<p><b>DNWG | 2017 - 2017</b></p>
-<p>Report on the SAP landscape to provide guidance to the Cloud Strategy of DNWG</p>
-<ul>
-<li>SAP</s></samp></li>
-<li>SAP CLOUD</li>
-<li>Architecture</li>
-</ul>
+<!-- ===================== WORK EXPERIENCE ===================== -->
+<div class="sheet xp">
+  <div class="xp-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+  </div>
+  <h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Werkervaring</h2>
+  <article class="job">
+    <div class="job-head"><h3>Oliver Connect</h3><span class="date">Januari 2022 – heden</span></div>
+    <p class="title">Senior Integratie Consultant</p>
+    <p>Vanuit Oliver Connect werkt Peter aan diverse Azure-integratieprojecten waarin SAP-systemen worden gekoppeld aan cloudapplicaties en externe partijen. Vaste onderdelen zijn API Management, Logic Apps en XSLT-mappings.</p>
+    <ul><li>Havenbedrijf Rotterdam: Azure SAP-integratiespecialist voor de SAP S/4HANA-migratie. Realiseren van de aansluiting van bestaande interfaces op het nieuwe SAP S/4HANA-systeem via het Azure-integratieplatform (SOAP- en OData-services).</li><li>ODRA: koppeling van SAP ByD met de cloudapplicatie Nmbrs voor HR en payroll (SOAP- en OData-services).</li><li>Costengineering: SAP S/4HANA-connector met Cleopatra, een cost-managementapplicatie, voor het SAP MaintenanceOrder-proces (SOAP- en OData-services).</li><li>Zenner: SAP ECC SOAP-service gekoppeld aan de DHL shipment- en label-API&#x27;s (SOAP en REST).</li><li>Aldipress: ontsluiten van SAP ECC-services als REST API&#x27;s voor externe webapplicaties, inclusief Swagger API-definities, en het opzetten van sFTP-datatransfer met Azure Data Factory.</li><li>Royal de Boer: SAP IDocs als XML aanbieden via sFTP (REST API).</li></ul>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Kafkas</h3><span class="date">Januari 2023 – heden</span></div>
+    <p class="title">Senior Integratie Consultant</p>
+    <p>Voor Kafkas heeft Peter een adapter op SAP BTP ontwikkeld om productgerelateerde data te synchroniseren tussen S/4HANA, inRiver PIM en SAP CPQ, op basis van OData-services en bestaande SAP API&#x27;s. Het project omvatte het opzetten van connecties via de Cloud Connector, het inrichten van services binnen SOAMANAGER, het ontwerpen van de uit te wisselen berichten en de mapping.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Raad voor Rechtsbijstand</h3><span class="date">April 2022 – augustus 2022</span></div>
+    <p class="title">Senior Integratie Consultant</p>
+    <p>Ontwikkelen van API&#x27;s tussen overheidsdiensten en een planningsapplicatie voor advocaten. Peter ontwikkelde de API-definities in Boomi, realiseerde de integratie met de backendapplicaties en ondersteunde bij het opzetten van connecties en het uitvoeren van de testwerkzaamheden.</p>
+  </article>
+  <div class="dots" aria-hidden="true"></div>
+</div>
 
-<p><b>CRH | 2017 - 2017</b></p>
-<p>Functional design of webapplication used for their logistic process</p>
-<ul>
-<li>SAP</s></samp></li>
-<li>Front-end</li>
-</ul>
-<h3><b>SAP PI consultant</b></h3>
-<p><b>Greenery | 2006 - 2010</b></p>
-<p>Move interfaces from SAP Business Connector to SAP XI</p>
-<p>Integrations project connecting Front-end web application with SAP backend</p>
-<ul>
-<li>SAP</li>
-<li>XI</li>
-<li>SOAP web-services</li>
-<li>Sharepoint</li>
-</ul>
-<p><b>Aldipress | 2006 - 2010</b></p>
-<p>Building interfaces on SAP XI platform connecting Front-end web applications to SAP ECC backend using web-services. </p>
-<ul>
-<li>EDI</s></samp></li>
-<li>GS1DAS</li>
-<li>XML</li>
-<li>SOAP</li>
-<li>AS2</li>
-<li>Seeburger SAP adapter</li>
-</ul>
-<p><b>Mammoet | 2006 - 2010</b></p>
-<p>Building interface on SAP XI platform</p>
-<ul>
-<li>ABAP</s></samp></li>
-<li>IDOC</li>
-<li>SAP HR</li>
-</ul>
-<h3><b> Coordinator ECommerce and ERP</b></h3>
-<p><b>Ahrend Office Products | February 2000 - April 2006</b></p>
-<p>Technical responsible for all the ecommerce- and ERP-systems implemented in Europe.</p>
-<ul>
-<li>Covast B2B integration</li>
-<li>EURO Conversion</li>
-<li>XSLT</li>
-<li>ARIBA</li>
-<li>SAP</li>
-<li>AS400</li>
-<li>RPG</li>
-</ul>
+<div class="sheet xp">
+  <div class="xp-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+  </div>
+  <article class="job">
+    <div class="job-head"><h3>Aldipress</h3><span class="date">April 2021 – maart 2022</span></div>
+    <p class="title">Senior Integratie Consultant</p>
+    <p>Bij Aldipress is de SAP PI-omgeving uitgefaseerd naar de cloudoplossing Jitterbit. Peter zette SOAP-services om naar REST API-definities, richtte diverse sFTP-interfaces met externe partijen in en ondersteunde bij het opzetten van connecties met AWS. Daarnaast stuurde en adviseerde hij het ABAP-team van Accenture en ondersteunde hij bij de testwerkzaamheden.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Alliander</h3><span class="date">November 2021 – januari 2022</span></div>
+    <p class="title">Senior Integratie Consultant</p>
+    <p>Technische ondersteuning bij de migratie van integraties met lokale filesystemen naar SharePoint en AWS, met behulp van Seeburger-adapters.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>IDA</h3><span class="date">Juni 2021 – november 2021</span></div>
+    <p class="title">Senior Integratie Consultant</p>
+    <p>Uitvoeren van een haalbaarheidsonderzoek naar het vervangen van Talend ESB door Seeburger. Peter bracht de huidige situatie en de knelpunten in kaart, beschreef de gewenste situatie en leverde een plan van aanpak met kosteninschattingen op.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Deloitte</h3><span class="date">April 2019 – juni 2021</span></div>
+    <p class="title">Senior Integratie Consultant</p>
+    <p>Centraliseren van de lokale PO-omgevingen in België en Denemarken naar één centrale PO-omgeving. Hierbij zijn ongeveer 50 interfaces omgebouwd en heeft Peter de testen begeleid en ondersteund, in nauwe afstemming met de functioneel verantwoordelijken in beide landen.</p>
+    <p>Daarnaast was Peter integratieconsultant in het SWIFT-project, waarin PO binnen een hybride integratieoplossing communiceert met onder andere ECC, SuccessFactors, Concur, SAP HR en MuleSoft. Hij bouwde diverse typen interfaces (REST/OData, IDoc, SOAP, File/sFTP), configureerde de connecties ook in de SAP-backendsystemen, stemde af met het ABAP-team en ondersteunde bij het testen. Tevens adviseerde hij over CPI-integratieoplossingen.</p>
+  </article>
+  <div class="dots" aria-hidden="true"></div>
+</div>
 
+<div class="sheet xp">
+  <div class="xp-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+  </div>
+  <article class="job">
+    <div class="job-head"><h3>Heerema</h3><span class="date">April 2019 – augustus 2021</span></div>
+    <p class="title">Senior Integratie Consultant</p>
+    <p>Opzetten van diverse HR-gerelateerde interfaces:</p>
+    <ul><li>SAP HR naar de ERP-systemen op de diverse schepen van Heerema, met IDoc naar REST en een PO BPM-oplossing.</li><li>SAP HR naar SuccessFactors: inrichten van de standaardinterface voor employee data.</li><li>Uitwerken van een POC voor het uitwisselen van SuccessFactors Learning-gegevens.</li><li>SuccessFactors Learning naar een interne Oracle-database.</li></ul>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Greenyard</h3><span class="date">April 2019 – juli 2019</span></div>
+    <p class="title">Senior Integratie Consultant</p>
+    <p>Opzetten van EDI-interfaces met Eurogroup. De implementatie omvatte het inrichten van de SAP PO B2B add-on, het opzetten van een AS2-connectie met Eurogroup, de implementatie van de berichten ORDERS, ORDRSP en DESADV, mappings tussen IDoc en EANCOM en het opzetten van proxydefinities.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>JDE &amp; XPO</h3><span class="date">April 2018 – maart 2019</span></div>
+    <p class="title">Seeburger Integratieconsultant / Service Delivery Manager</p>
+    <p>Bij XPO werkzaam als Seeburger-integratieconsultant met als projectdoel het samenvoegen van drie Seeburger-implementaties tot één centrale omgeving. Daarnaast technische ondersteuning bij diverse integratietrajecten, zoals webservice-interfaces met de Agresso/Coin-applicatie en de integratie met eTMS, het Transport Management Systeem van AndSoft.</p>
+    <p>Bij JDE als interim Service Delivery Manager verantwoordelijk voor het verbeteren van de changemanagementprocessen van de Seeburger-omgevingen voor alle JDE-vestigingen in 24 landen. Peter zette overlegstructuren op met de vestigingen, paste de processen in ServiceNow in, coördineerde changes en escalaties en rapporteerde aan het IT-management.</p>
+  </article>
+  <div class="dots" aria-hidden="true"></div>
+</div>
 
-<h3><b>before 2000 </b></h3>
-<p>
-I worked in several IT and technical roles across software development,
-systems support, and project management. These positions also included responsibilities in
-IT management and project leadership, forming a strong foundation for my
-later focus on integration architecture and cloud-based solutions.
-</p>
-</section>
-</article>
-</main>
+<div class="sheet xp">
+  <div class="xp-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+  </div>
+  <article class="job">
+    <div class="job-head"><h3>Oliver IT</h3><span class="date">Januari 2015 – maart 2018</span></div>
+    <p class="title">Field Manager</p>
+    <p>Binnen Oliver IT het aanspreekpunt voor de consultants op het gebied van kennismanagement en persoonlijke ontwikkeling.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>PostNL</h3><span class="date">Januari 2010 – maart 2018</span></div>
+    <p class="title">Senior Integratie Consultant</p>
+    <p>Verantwoordelijk voor de continuïteit van het SAP-integratielandschap en voor het functioneel aansturen en bemensen van de projecten rond de integratiecomponenten Portal, CE, PI en CPI en de SAP-systemen MDM, ECC, CRM, SRM en BW. Daarnaast verantwoordelijk voor de operationele koppelingen met externe partijen en applicaties zoals Salesforce, SuccessFactors, SAP ByD, Cendris, Medea, Ortec, Adyen en Concur. Peter analyseerde en loste complexe incidenten op of coachte collega&#x27;s daarbij, en was gesprekspartner voor management en projectleiding over de voortgang van werkzaamheden en resources.</p>
+    <p>Als meewerkend voorman en integratieconsultant werkzaam op diverse projecten, waaronder:</p>
+    <ul><li>Migratie van het volledige SAP-landschap naar een nieuwe IaaS-leverancier, inclusief het aanpassen van de integratie- en access-laag zodat het landschap in de doelarchitectuur past en ‘cloud-aware’ wordt. Peter was verantwoordelijk voor de technische migratie van 600 interfaces en diverse CE- en Portal-applicaties, met een team van 8 technische consultants.</li><li>Implementatie van integratieconcepten op basis van canonieke berichtstructuren en diverse integratiemethoden met interne en externe applicaties.</li></ul>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>DNWG</h3><span class="date">Juni 2017 – november 2017</span></div>
+    <p class="title">SAP Architect</p>
+    <p>In kaart brengen van de bestaande SAP-architectuur, met als primair doel verantwoorde investeringen te doen in nieuwe ontwikkelingen en de cloudstrategie van DNWG te bepalen. Dit gebeurde via workshops met applicatiespecialisten, waarna Peter de bevindingen heeft opgeleverd en gepresenteerd.</p>
+  </article>
+  <div class="dots" aria-hidden="true"></div>
+</div>
+
+<div class="sheet xp">
+  <div class="xp-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+  </div>
+  <article class="job">
+    <div class="job-head"><h3>CRH</h3><span class="date">April 2017 – juli 2017</span></div>
+    <p class="title">SAP Architect</p>
+    <p>Opstellen van een functioneel ontwerp voor de realisatie van een webapplicatie voor SAP-gerelateerde orderafroepprocessen, op basis van workshops met de proceseigenaren.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Greenery</h3><span class="date">Juli 2008 – januari 2010</span></div>
+    <p class="title">Solution Architect</p>
+    <p>Onderzoek naar NetWeaver-oplossingsrichtingen voor het ontsluiten van ECC 6.0-functionaliteit naar een portal. Peter leverde een gedetailleerd voorstel op voor de ontsluiting van SAP ECC 6.0-functionaliteit naar SAP CE 7.1, stelde het plan van aanpak op en had de projectleiding over de realisatie van de CE/PI/ECC-portalomgeving voor telers.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Agrifirm</h3><span class="date">Augustus 2009 – september 2009</span></div>
+    <p class="title">Integratie Consultant</p>
+    <p>Opstellen van technische ontwerpen voor diverse financiële interfaces.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Greenery</h3><span class="date">April 2008 – juli 2008</span></div>
+    <p class="title">Integratie Consultant</p>
+    <p>Conversie van SAP Business Connector-interfaces naar XI, voor koppelingen tussen ECC 5.0, SonicMQ en SharePoint.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Ctac</h3><span class="date">Januari 2006 – januari 2009</span></div>
+    <p class="title">Integratie Consultant</p>
+    <p>Vanuit Ctac werkzaam bij diverse klanten:</p>
+    <ul><li>Aldipress: vervangen van de WALVIS EDI-middleware door XI in combinatie met Seeburger, het GS1DAS-integratieproject en de upgrade naar PI 7.11.</li><li>Mammoet: integratie van HR-opleidingsinformatie met een externe kennismanagementapplicatie.</li></ul>
+  </article>
+  <div class="dots" aria-hidden="true"></div>
+</div>
+
+<div class="sheet xp">
+  <div class="xp-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+  </div>
+  <article class="job">
+    <div class="job-head"><h3>Ahrend Office Products</h3><span class="date">November 2001 – juli 2006</span></div>
+    <p class="title">Coördinator E-commerce</p>
+    <p>Ahrend Online: aansturing van functioneel applicatiebeheer, planning en implementaties van nieuwe softwarereleases. Eerste aanspreekpunt voor projecten voor klanten in Duitsland, Nederland, Frankrijk en België, waarbij op basis van eisen en wensen uit de markt is toegewerkt naar totaaloplossingen.</p>
+    <p>Overige e-commerceoplossingen: koppeling van diverse externe applicaties en integratie van verkoop- en inkoopoplossingen met handelspartners, met als uitgangspunt dat het volledige proces van bestelling tot factuur geautomatiseerd verloopt. Peter bepaalde in overleg met externe partijen de uit te wisselen berichten en de wijze van communicatie tussen applicaties en systemen, en implementeerde een e-commerceoplossing met koppelingen naar onder andere SAP, Ariba, Oracle en Exact.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Ahrend Office Products</h3><span class="date">Januari 2000 – oktober 2001</span></div>
+    <p class="title">Coördinator ERP</p>
+    <ul><li>Functioneel applicatiebeheer voor alle Ahrend-vestigingen, inclusief planning en uitvoering van implementaties van nieuwe releases en updates.</li><li>Projectleider van de euroconversie voor alle vestigingen.</li><li>Projectleider van de ERP-implementatie voor de Ahrend-vestiging in Hamburg.</li><li>Datawarehousing met SPSS (ShowCase): opbouwen van informatievoorziening en structureren van processen.</li></ul>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Dorco / Despec</h3><span class="date">Mei 1997 – januari 2000</span></div>
+    <p class="title">IT&amp;T Manager</p>
+    <ul><li>Technisch projectleider van het ERP-millenniumproject voor alle Despec-vestigingen.</li><li>Hoofd IT&amp;T Benelux en Duitsland, verantwoordelijk voor inrichting en beheer van systemen en applicaties van meerdere bedrijfsonderdelen van de Despec-groep.</li><li>Opzetten van een structuur binnen diverse ICT-afdelingen voor bedrijfskritische applicaties en systemen.</li><li>Lid van het fusieteam in het fusietraject tussen Esveha, Dorco en de Despec-groep.</li><li>Herstructurering van IT-systemen van maatwerk naar standaardoplossingen binnen de Van Dorp-groep.</li></ul>
+  </article>
+  <div class="dots" aria-hidden="true"></div>
+</div>
+
+<div class="sheet xp">
+  <div class="xp-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+  </div>
+  <article class="job">
+    <div class="job-head"><h3>Bestdata</h3><span class="date">November 1995 – augustus 1997</span></div>
+    <p class="title">Consultant ERP</p>
+    <p>Verantwoordelijk voor implementatietrajecten van Bestmate/400 bij diverse middelgrote ondernemingen, waaronder HEA (groothandel in elektrotechnische producten) en fietsfabrikant Gazelle.</p>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Esveha</h3><span class="date">April 1989 – oktober 1995</span></div>
+    <p class="title">IT Manager</p>
+    <ul><li>Projectleider bij de invoering van een nieuw ERP-systeem, van pakketselectie tot en met invoering en beheer.</li><li>Projectleider ICT en verantwoordelijk voor de infrastructuur bij de bedrijfsverhuizing.</li><li>Onderhoud en operationeel beheer van de ERP-systemen.</li></ul>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>Modem Software</h3><span class="date">December 1986 – maart 1989</span></div>
+    <p class="title">Programmeur</p>
+    <p>Diverse projecten in binnen- en buitenland voor ondernemingen van Bührmann-Tetterode, onder andere:</p>
+    <ul><li>Analyse van het bestaande en implementatie van een nieuw facturatiesysteem.</li><li>Analyse, implementatie en beoordeling van een servicemanagementapplicatie.</li><li>AS/400-programmering van diverse applicaties.</li></ul>
+  </article>
+  <article class="job">
+    <div class="job-head"><h3>KOK Beheer</h3><span class="date">November 1984 – september 1986</span></div>
+    <p class="title">Operator &amp; Systeembeheerder AS/400</p>
+    <p>Beheer van datacommunicatiefaciliteiten, controle van diverse periodieke verwerkingen en onderhoud van programmatuur.</p>
+  </article>
+  <div class="dots" aria-hidden="true"></div>
+</div>
+
 </body>
-
-
-</html>                                                     
+</html>
